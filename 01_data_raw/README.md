@@ -20,8 +20,8 @@ Armazenar os dados originais do IBGE antes de qualquer processamento.
 
 ## 📊 Metadados da Fonte
 **Fonte:** IBGE - PNAD Contínua  
-**Período:** 2020-2023  
-**Variáveis:** Taxa de desemprego por região/estado  
+**Período:** 2020-2025  
+**Variáveis:** Taxa de desemprego brasil 2020 a 2025  
 **Frequência:** Trimestral  
 **Link oficial:** [https://www.ibge.gov.br/](https://www.ibge.gov.br/)
 
