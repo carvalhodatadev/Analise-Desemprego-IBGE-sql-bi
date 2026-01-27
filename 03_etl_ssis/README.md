@@ -59,13 +59,11 @@ Implementar o processo automatizado de Extração, Transformação e Carga (ETL)
 - `README.md` - Esta documentação
 - `screenshots/01_control_flow.png` - Print do Control Flow
 - `screenshots/02_data_flow.png` - Print do Data Flow  
-- `screenshots/03_execution_results.png` - Print dos resultados
-- `screenshots/04_success_confirmation.png` - Print da confirmação
-- `documentation/ssis_configuration.md` - Configurações detalhadas
+- `screenshots/03_execution_results.png` - Print dos resultados da execução
+- `screenshots/04_success_confirmation.png` - Print da confirmação de sucesso
+- `documentation/ssis_configuration.md` - Configurações detalhadas do SSIS
 
 ## 🔗 Próxima Etapa
 03_etl_ssis/ → 04_orchestration/ (Agendamento com SQL Server Agent)
-
-text
 
 **Status:** ✅ Pacote SSIS completo e funcional - Pronto para automação
