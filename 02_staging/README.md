@@ -1,56 +1,84 @@
-# 🛠️ 02 - Área de Staging
+# 📊 02 - Área de Staging
 
 ## 📌 Objetivo
-Preparar e limpar os dados brutos para o processo de ETL.
+Preparar e transformar os dados brutos do IBGE do formato horizontal (92 colunas) para formato vertical/tidy (92 linhas), adequando-os para o processo de ETL automatizado.
 
 ## 🔧 Processo Realizado
-1. **Importação**: Dados do CSV para tabela SQL
-2. **Limpeza**: Remoção de nulos e inconsistências
-3. **Transformação**: Transposição de colunas para linhas (de horizontal para vertical)
-4. **Padronização**: Formatação de datas e valores
+1. **Importação**: Dados do CSV transformado para tabela SQL
+2. **Transformação**: Transposição de colunas para linhas (92 colunas horizontais → 92 linhas verticais)
+3. **Limpeza**: Conversão de formatos e tratamento de valores
+4. **Validação**: Comparação ponto a ponto com data warehouse
+5. **Padronização**: Formatação de trimestres e valores decimais
 
 ## 📊 Estrutura dos Dados Após Staging
 Os dados agora estão no formato "tidy data" (dados organizados), ideal para análise:
 
-| trimestre | taxa_desemprego | data_processamento |
-|-----------|-----------------|--------------------|
-| 2018 T1   | 13.2            | 2025-01-28         |
-| 2018 T2   | 12.6            | 2025-01-28         |
-| 2018 T3   | 12.0            | 2025-01-28         |
-| ...       | ...             | ...                |
+| trimestre            | taxa_desemprego | data_carga          |
+|----------------------|-----------------|---------------------|
+| "dez-jan-fev 2023"   | 8.6             | 2025-01-28 10:30:00 |
+| "jan-fev-mar 2023"   | 8.8             | 2025-01-28 10:30:00 |
+| "fev-mar-abr 2023"   | 8.5             | 2025-01-28 10:30:00 |
+| ...                  | ...             | ...                 |
+| "ago-set-out 2025"   | 5.4             | 2025-01-28 10:30:00 |
+
+**Total:** 92 trimestres (2018-2025)
 
 ## 🖼️ Evidências Visuais do Processo
 
-### 1. Query SQL de Transformação
-![Query de Transformação](query_transformacao.png)
-*Código SQL usado para transpor os dados de formato horizontal para vertical*
+### 1. Dados Originais no Excel
+![Dados Brutos no Excel](dados_excel_brutos1.PNG)
+*Dados originais do IBGE em formato horizontal (92 colunas) antes da transformação*
 
-### 2. Resultado da Tabela de Staging
-![Tabela de Staging](tabela_staging.png)
-*Visualização da tabela após transformação no SQL Server*
+### 2. Dados Transformados
+![Dados Transformados](dados_trasformados.PNG)
+*Dados convertidos para formato vertical (tidy) após transposição no Excel - 92 linhas × 2 colunas*
 
 ### 3. Validação dos Dados
-![Validação](validacao_staging.png)
-*Verificação de qualidade e consistência dos dados transformados*
+![Validação entre Stage e DW](analise_92_linhas.PNG)
+*Comparação e validação dos dados entre staging e data warehouse (92 trimestres)*
 
 ## ⚙️ Tecnologias Utilizadas
-- **SQL Server**: Para armazenamento e transformação
-- **T-SQL**: Linguagem de transformação dos dados
+- **Microsoft Excel**: Para transposição manual dos dados
+- **SQL Server**: Para armazenamento e validação
+- **T-SQL**: Linguagem de transformação e consulta
 - **SQL Server Management Studio**: Interface de gerenciamento
 
 ## 📝 Notas Técnicas
-- Dados transformados de 1 linha × 30 colunas para 29 linhas × 3 colunas
-- Cada linha representa um trimestre específico
-- Adicionada coluna de metadados (data_processamento)
-- Valores convertidos para formato decimal apropriado
-- Codificação padrão: UTF-8
+- Transformação manual realizada com "Colar Especial → Transpor"
+- Dados convertidos de 1 linha × 92 colunas para 92 linhas × 2 colunas
+- Cada linha representa um trimestre móvel específico
+- Valores convertidos para formato decimal (5,2)
+- Validação completa de 92 registros realizada
+- Comparação ponto a ponto com data warehouse
 
-## 📁 Arquivos Nesta Pasta
-- `README.md` - Esta documentação
-- `query_transformacao.sql` - Script SQL completo da transformação
-- `query_transformacao.png` - Print da query no SSMS
-- `tabela_staging.png` - Print da tabela resultante
-- `validacao_staging.png` - Print da validação dos dados
+## 📋 Estrutura da Tabela Staging
+```sql
+CREATE TABLE STG_DESEMPREGO_IBGE (
+    id_trimestre INT IDENTITY(1,1) PRIMARY KEY,
+    trimestre_raw NVARCHAR(50) NOT NULL,
+    taxa_raw NVARCHAR(20) NOT NULL,
+    taxa_convertida DECIMAL(5,2) NULL,
+    ano_extraido INT NULL,
+    mes_inicial NVARCHAR(3) NULL,
+    data_trimestre DATE NULL,
+    data_carga DATETIME DEFAULT GETDATE(),
+    flag_processado BIT DEFAULT 0
+);
 
-## 🔗 Fluxo de Dados
-- 01_data_raw/ → Transformação SQL → 02_staging/ → Pronto para ETL
+##📁 Arquivos Nesta Pasta
+README.md - Esta documentação
+
+dados_excel_brutos1.PNG - Print dos dados brutos no Excel
+
+dados_trasformados.PNG - Print dos dados transformados
+
+analise_92_linhas.PNG - Print da validação dos dados
+
+dados_desemprego_staging.csv - Arquivo CSV com dados transformados (92 registros)
+
+transformacao_excel.md - Tutorial do processo de transposição
+
+##🔗 Fluxo de Dados
+01_data_raw/ → Transformação Excel → 02_staging/ → Pronto para ETL (03_etl_ssis/)
+
+##Status: ✅ Dados transformados e validados - Prontos para carga automatizada
