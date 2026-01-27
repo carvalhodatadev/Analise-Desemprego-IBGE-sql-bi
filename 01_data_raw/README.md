@@ -20,7 +20,7 @@ Armazenar os dados originais do IBGE antes de qualquer processamento.
 
 ## 📊 Metadados da Fonte
 **Fonte:** IBGE - PNAD Contínua  
-**Período:** 2020-2025  
+**Período:** 2018-2025  
 **Variáveis:** Taxa de desemprego brasil 2020 a 2025  
 **Frequência:** Trimestral  
 **Link oficial:** [](https://sidra.ibge.gov.br/tabela/4092)
