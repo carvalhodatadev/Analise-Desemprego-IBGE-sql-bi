@@ -44,7 +44,7 @@ Estrutura: 1 linha (Brasil) × 30 colunas (trimestres de 2018-2025)
 🔗 Links Úteis
 IBGE - PNAD Contínua
 
-SIDRA IBGE - Tabela 4099
+SIDRA IBGE - Tabela 4092
 
 Documentação Metodológica
 
