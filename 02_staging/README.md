@@ -4,28 +4,27 @@
 Preparar e transformar os dados brutos do IBGE do formato horizontal (92 colunas) para formato vertical/tidy (92 linhas), adequando-os para o processo de ETL automatizado.
 
 ## 🔧 Processo Realizado
-1. **Importação**: Dados do CSV transformado para tabela SQL
-2. **Transformação**: Transposição de colunas para linhas (92 colunas horizontais → 92 linhas verticais)
-3. **Limpeza**: Conversão de formatos e tratamento de valores
-4. **Validação**: Comparação ponto a ponto com data warehouse
-5. **Padronização**: Formatação de trimestres e valores decimais
+1. **Transformação**: Transposição de colunas para linhas (92 colunas horizontais → 92 linhas verticais)
+2. **Limpeza**: Conversão de formatos e tratamento de valores
+3. **Validação**: Comparação ponto a ponto com data warehouse
+4. **Padronização**: Formatação de trimestres e valores decimais
 
 ## 📊 Estrutura dos Dados Após Staging
 Os dados agora estão no formato "tidy data" (dados organizados), ideal para análise:
 
-| trimestre            | taxa_desemprego | data_carga          |
-|----------------------|-----------------|---------------------|
-| "dez-jan-fev 2023"   | 8.6             | 2025-01-28 10:30:00 |
-| "jan-fev-mar 2023"   | 8.8             | 2025-01-28 10:30:00 |
-| "fev-mar-abr 2023"   | 8.5             | 2025-01-28 10:30:00 |
-| ...                  | ...             | ...                 |
-| "ago-set-out 2025"   | 5.4             | 2025-01-28 10:30:00 |
+| trimestre            | taxa_desemprego | ano  | mes_inicial |
+|----------------------|-----------------|------|-------------|
+| jan-fev-mar 2018     | 13.2            | 2018 | jan         |
+| fev-mar-abr 2018     | 13.0            | 2018 | fev         |
+| mar-abr-mai 2018     | 12.8            | 2018 | mar         |
+| ...                  | ...             | ...  | ...         |
+| ago-set-out 2025     | 5.4             | 2025 | ago         |
 
-**Total:** 92 trimestres (2018-2025)
+**Total:** 92 trimestres (jan-fev-mar 2018 até ago-set-out 2025)
 
-## 🖼️ Evidências Visuais do Processo
+## 📸 Evidências Visuais do Processo
 
-### 1. Dados Originais no Excel
+### 1. Dados Brutos no Excel
 ![Dados Brutos no Excel](dados_excel_brutos1.PNG)
 *Dados originais do IBGE em formato horizontal (92 colunas) antes da transformação*
 
@@ -36,20 +35,6 @@ Os dados agora estão no formato "tidy data" (dados organizados), ideal para an�
 ### 3. Validação dos Dados
 ![Validação entre Stage e DW](analise_92_linhas.PNG)
 *Comparação e validação dos dados entre staging e data warehouse (92 trimestres)*
-
-## ⚙️ Tecnologias Utilizadas
-- **Microsoft Excel**: Para transposição manual dos dados
-- **SQL Server**: Para armazenamento e validação
-- **T-SQL**: Linguagem de transformação e consulta
-- **SQL Server Management Studio**: Interface de gerenciamento
-
-## 📝 Notas Técnicas
-- Transformação manual realizada com "Colar Especial → Transpor"
-- Dados convertidos de 1 linha × 92 colunas para 92 linhas × 2 colunas
-- Cada linha representa um trimestre móvel específico
-- Valores convertidos para formato decimal (5,2)
-- Validação completa de 92 registros realizada
-- Comparação ponto a ponto com data warehouse
 
 ## 📋 Estrutura da Tabela Staging
 ```sql
@@ -64,9 +49,32 @@ CREATE TABLE STG_DESEMPREGO_IBGE (
     data_carga DATETIME DEFAULT GETDATE(),
     flag_processado BIT DEFAULT 0
 );
+⚙️ Tecnologias Utilizadas
+Microsoft Excel: Para transposição manual dos dados
 
-##📁 Arquivos Nesta Pasta
+SQL Server: Para armazenamento e validação
+
+T-SQL: Para transformação e consulta
+
+CSV: Formato intermediário para transferência
+
+📝 Estatísticas dos Dados Reais
+Período completo: 92 trimestres móveis
+
+Taxa máxima: 14.9% (jul-ago-set 2020 - pico da pandemia)
+
+Taxa mínima: 5.4% (ago-set-out 2025)
+
+Redução: Queda de 14.9% para 5.4% em 7 anos
+
+Formato: Trimestres móveis (ex: "dez-jan-fev 2023")
+
+📁 Arquivos Nesta Pasta
 README.md - Esta documentação
+
+dados_desemprego_staging.csv - Arquivo CSV com dados transformados (92 registros)
+
+transformacao_excel.md - Tutorial do processo de transposição
 
 dados_excel_brutos1.PNG - Print dos dados brutos no Excel
 
@@ -74,11 +82,9 @@ dados_trasformados.PNG - Print dos dados transformados
 
 analise_92_linhas.PNG - Print da validação dos dados
 
-dados_desemprego_staging.csv - Arquivo CSV com dados transformados (92 registros)
+🔗 Próxima Etapa
+Os dados estão transformados e validados, prontos para:
 
-transformacao_excel.md - Tutorial do processo de transposição
-
-##🔗 Fluxo de Dados
-01_data_raw/ → Transformação Excel → 02_staging/ → Pronto para ETL (03_etl_ssis/)
-
-##Status: ✅ Dados transformados e validados - Prontos para carga automatizada
+text
+02_staging/ → 03_etl_ssis/ (Processamento ETL automatizado)
+Status: ✅ Dados transformados e validados - Prontos para carga automatizada
