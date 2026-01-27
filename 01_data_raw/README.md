@@ -13,15 +13,15 @@ Armazenar os dados originais do IBGE antes de qualquer processamento.
 
 ### 1. Seleção de Dados no Site do IBGE
 ![Seleção de dados no IBGE](fonte_ibge_site_selecao.png)
-*Tela mostrando a seleção de trimestres (2018-2022) no sistema do IBGE*
+*Tela mostrando a seleção de trimestres (2018-2025) no sistema do IBGE*
 
 ### 2. Dados Originais no Excel
 ![Dados no Excel](dados_excel_brutos.png)
-*Visualização dos dados brutos no Excel - Taxa de desemprego do Brasil por trimestre (2018 T1 a 2022 T2)*
+*Visualização dos dados brutos no Excel - Taxa de desemprego do Brasil por trimestre (2018 T1 a 2025 T2)*
 
 ## 📊 Metadados da Fonte
 **Fonte:** IBGE - PNAD Contínua  
-**Período:** 2018 T1 a 2022 T2  
+**Período:** 2018 T1 a 2025 T2  
 **Variável:** Taxa de desemprego  
 **Frequência:** Trimestral  
 **Unidade:** Percentual (%)  
@@ -45,6 +45,4 @@ Armazenar os dados originais do IBGE antes de qualquer processamento.
 - `fonte_ibge_site_selecao.png` - Print da seleção no site do IBGE
 - `dados_excel_brutos.png` - Print dos dados no Excel
 
----
 
-*Última atualização: $(date +%d/%m/%Y)*
