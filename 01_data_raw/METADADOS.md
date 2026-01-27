@@ -6,7 +6,7 @@
 - **Tabela:** 4099 - Taxa de desocupação, por sexo e grupo de idade
 - **Indicador:** Taxa de desemprego (pessoas de 14 anos ou mais)
 - **Período de referência:** 2018 T1 a 2025 T1
-- **Data de extração:** [DATA DA SUA EXTRAÇÃO]
+- **Data de extração:** [29/12/2025]
 - **Formato original:** CSV/Excel com transposição horizontal
 
 ## 📊 Estrutura dos Dados Originais
