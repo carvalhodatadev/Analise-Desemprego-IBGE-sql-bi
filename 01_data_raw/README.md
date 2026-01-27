@@ -23,7 +23,7 @@ Armazenar os dados originais do IBGE antes de qualquer processamento.
 **Período:** 2020-2025  
 **Variáveis:** Taxa de desemprego brasil 2020 a 2025  
 **Frequência:** Trimestral  
-**Link oficial:** [https://www.ibge.gov.br/](https://www.ibge.gov.br/)
+**Link oficial:** [](https://sidra.ibge.gov.br/tabela/4092)
 
 ## ⚠️ Observações
 - Dados mantidos no formato original
