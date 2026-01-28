@@ -12,19 +12,19 @@ Implementar o processo automatizado de Extração, Transformação e Carga (ETL)
 ## 📊 Fluxo do Pacote SSIS
 
 ### 1. Control Flow
-![Control Flow do Pacote SSIS](screenshots/01_control_flow.PNG)
+![Control Flow do Pacote SSIS](./screenshots/01_control_flow.PNG)
 *Orquestração das tarefas do pacote: extração, transformação e carga*
 
 ### 2. Data Flow
-![Data Flow do Pacote SSIS](screenshots/02_data_flow.PNG)
+![Data Flow do Pacote SSIS](./screenshots/02_data_flow.PNG)
 *Detalhamento das transformações aplicadas aos dados durante o ETL*
 
 ### 3. Resultados da Execução
-![Resultados da Execução](screenshots/03_execution_results.PNG)
+![Resultados da Execução](./screenshots/03_execution_results.PNG)
 *Análise dos dados após processamento - 92 registros em stage e DW*
 
 ### 4. Confirmação de Sucesso
-![Confirmação de Sucesso](screenshots/04_success_confirmation.PNG)
+![Confirmação de Sucesso](./screenshots/04_success_confirmation.PNG)
 *Confirmação de ETL completo com sucesso - 92 registros processados*
 
 ## ⚙️ Configurações das Conexões
@@ -62,6 +62,7 @@ Implementar o processo automatizado de Extração, Transformação e Carga (ETL)
 - `screenshots/03_execution_results.PNG` - Print dos resultados da execução
 - `screenshots/04_success_confirmation.PNG` - Print da confirmação de sucesso
 - `documentation/ssis_configuration.md` - Configurações detalhadas do SSIS
+- `placeholder.txt` - Arquivo de placeholder
 
 ## 🔗 Próxima Etapa
 03_etl_ssis/ → 04_orchestration/ (Agendamento com SQL Server Agent)
