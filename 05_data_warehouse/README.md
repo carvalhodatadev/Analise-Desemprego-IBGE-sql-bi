@@ -1,4 +1,64 @@
 📊 Data Warehouse - Análise de Desemprego IBGE
+📐 Diagrama do Modelo de Dados
+⭐ Modelo Estrela do Data Warehouse (SQL Server)
+
+Representação da modelagem dimensional com tabela fato e dimensões, otimizada para análises analíticas.
+
+Componentes do Modelo:
+
+Tabela Fato: fato_desemprego
+
+Dimensões: dim_tempo, dim_regiao
+
+Relacionamentos 1:N
+
+Chaves substitutas para performance
+
+🔄 Processo ETL — Evidências no SSIS
+⚙️ 01 — Control Flow (Orquestração do Processo)
+
+Fluxo responsável por controlar a execução das etapas do processo ETL.
+
+Etapas:
+
+Carga do CSV para staging
+
+Execução de procedures de processamento do DW
+
+Controle de dependências entre tarefas
+
+🔁 02 — Data Flow (Pipeline de Transformação e Carga)
+
+Pipeline responsável pela movimentação e transformação dos dados.
+
+Componentes:
+
+Origem em arquivo CSV
+
+Coluna Derivada
+
+Conversão de Tipos de Dados
+
+Destino OLE DB (Data Warehouse)
+
+🎯 OBJETIVO DO DATA WAREHOUSE
+
+Construir o cérebro analítico do projeto — um Data Warehouse dimensional profissional que transforma os 92 trimestres de dados brutos do IBGE em insights estratégicos através de um modelo estrela otimizado para análise.
+
+🏗️ ARQUITETURA DO MODELO
+
+⭐ MODELO ESTRELA - OTIMIZADO PARA ANÁLISE ⭐
+
+🧠 Tabela Fato
+
+fato_desemprego — Métricas de desemprego por período e região
+
+🧩 Dimensões
+
+dim_tempo — Dimensão temporal com hierarquias
+
+dim_regiao — Dimensão geográfica com 6 regiões
+
 📁 Arquivos Nesta Pasta
 
 README.md — Esta documentação
@@ -18,73 +78,13 @@ scripts/03_sample_queries.sql — Consultas de exemplo para análise
 📊 Recursos Visuais
 📐 Diagramas
 
-diagrams/modelo_estrela_dw.png — Diagrama do modelo estrela (DW no SQL Server)
-
-diagrams/modelo_power_bi.png — Modelo de relacionamentos no Power BI
+diagrams/diagrama_sql.png
 
 📸 Screenshots
 
-screenshots/fluxo_controle_ssis.png — Control Flow do pacote SSIS (orquestração ETL)
+screenshots/01_control_flow.png
 
-screenshots/fluxo_dados_ssis.png — Data Flow do SSIS (pipeline de dados)
-
-📐 Diagramas do Projeto
-⭐ Modelo Estrela do Data Warehouse
-
-Representa a modelagem dimensional com:
-
-Tabela Fato: fato_desemprego
-
-Dimensões: dim_tempo, dim_regiao
-
-Relacionamentos 1:N otimizados para análise
-
-📊 Modelo no Power BI
-
-Modelo aplicado na camada semântica para:
-
-Análises temporais
-
-Comparações regionais
-
-Criação de KPIs e dashboards
-
-📸 Evidências do Processo ETL (SSIS)
-🔁 Control Flow — Orquestração do Pacote
-
-Fluxo responsável por:
-
-Carga do CSV para staging
-
-Execução das procedures de processamento do DW
-
-🔄 Data Flow — Pipeline de Dados
-
-Pipeline com:
-
-Origem em arquivo CSV
-
-Transformações (coluna derivada, conversão de dados)
-
-Carga em banco de dados (OLE DB)
-
-🎯 OBJETIVO DO DATA WAREHOUSE
-
-Construir o cérebro analítico do projeto - um Data Warehouse dimensional profissional que transforma os 92 trimestres de dados brutos do IBGE em insights estratégicos através de um modelo estrela otimizado para análise.
-
-🏗️ ARQUITETURA DO MODELO
-
-⭐ MODELO ESTRELA - OTIMIZADO PARA ANÁLISE ⭐
-
-🧠 Tabela Fato
-
-fato_desemprego — Métricas de desemprego por período e região
-
-🧩 Dimensões
-
-dim_tempo — Dimensão temporal com hierarquias
-
-dim_regiao — Dimensão geográfica com 6 regiões
+screenshots/02_data_flow.png
 
 🚀 IMPACTO DO DATA WAREHOUSE
 ❌ ANTES
@@ -164,51 +164,14 @@ Executar: scripts/02_insert_data.sql
 
 Executar: scripts/03_sample_queries.sql
 
-🔗 INTEGRAÇÃO COM ECOSSISTEMA
+🔗 PRÓXIMA ETAPA
 
-03_etl_ssis/ → Alimentação contínua
-
-04_orchestration/ → Automação via SQL Agent
-
-06_power_bi/ → Visualização profissional
-
-07_documentation/ → Documentação corporativa
-
-🏆 BENEFÍCIOS CONQUISTADOS
-
-Performance: Minutos em Excel → Segundos no DW
-
-Escalabilidade: 92 colunas limitadas → Milhões de registros
-
-Confiabilidade: Dados manuais → Auditoria completa
-
-Análise: Gráficos simples → Drill-down multidimensional
-
-Manutenção: Frágil e manual → Automatizado e robusto
-
-📋 CHECKLIST DE EXCELÊNCIA
-
-✅ Modelo Estrela implementado com best practices
-✅ 92 trimestres carregados com integridade
-✅ Índices otimizados para queries analíticas
-✅ Sistema de auditoria em tempo real
-✅ KPIs configurados com semáforo automático
-✅ Integração completa com pipeline ETL
-✅ Diagramas técnicos documentados
-✅ Evidências visuais do ETL (SSIS)
-
-🏁 PRÓXIMA ETAPA: 06_power_bi/
-
-🔥 PREPARE-SE PARA: Dashboard interativo em Power BI
-🎨 VISUALIZAÇÕES: Gráficos de tendência, KPIs, mapas
-📱 MULTIPLATAFORMA: Desktop, Web, Mobile
-🤖 IA INTEGRADA: Insights automáticos com Q&A
+➡️ 06_power_bi/ — Construção do dashboard interativo
+🎨 KPIs, gráficos de tendência e mapas
+📱 Desktop, Web e Mobile
+🤖 Insights automáticos com Q&A
 
 🚀 Conclusão
 
 Este Data Warehouse transforma dados brutos do IBGE em inteligência estratégica para decisões econômicas.
 Cada um dos 552 registros representa uma oportunidade de insight! 🚀
-
-Se quiser, próximo upgrade que posso fazer pra você:
-
-✅ Texto de descrição do projeto para LinkedIn
