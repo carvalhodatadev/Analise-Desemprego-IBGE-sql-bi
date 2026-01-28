@@ -1,220 +1,154 @@
 📊 Data Warehouse - Análise de Desemprego IBGE
+📸 Evidências Visuais do Projeto
+🔄 Processo ETL no SSIS — Control Flow
+
+🔄 Processo ETL no SSIS — Data Flow
+
+📐 Diagrama do Modelo Estrela (SQL Server)
+
+🎯 Objetivo do Data Warehouse
+
+Construir o cérebro analítico do projeto — um Data Warehouse dimensional profissional que transforma os 92 trimestres de dados brutos do IBGE em insights estratégicos através de um modelo estrela otimizado para análise.
+
+🏗️ Arquitetura do Modelo Estrela
+
+⭐ MODELO ESTRELA — OTIMIZADO PARA ANÁLISE ⭐
+
+        DIM_TEMPO
+            ▲
+            │
+     FATO_DESEMPREGO
+
+
+Tabela Fato: fato_desemprego — métricas por trimestre
+
+Dimensão: dim_tempo — hierarquia temporal (Ano, Trimestre)
+
 📁 Arquivos Nesta Pasta
-README.md - Esta documentação
+📄 Documentação
 
-documentation/
+README.md — Esta documentação
 
-dimensional_model.md - Documentação do modelo dimensional
+documentation/dimensional_model.md — Modelo dimensional
 
-etl_process.md - Processo ETL para o DW
+documentation/etl_process.md — Processo ETL
 
-scripts/
+📜 Scripts SQL
 
-01_create_tables.sql - Script de criação das tabelas do DW
+scripts/01_create_tables.sql — Criação das tabelas
 
-02_insert_data.sql - Inserção dos 92 registros de desemprego
+scripts/02_insert_data.sql — Carga dos 92 trimestres
 
-03_sample_queries.sql - Consultas de exemplo para análise
+scripts/03_sample_queries.sql — Consultas analíticas
 
-diagrams/
+📊 Recursos Visuais
 
-diagrama_sql.PNG - Diagrama do modelo de dados
+diagrams/diagrama_sql.PNG — Diagrama do DW
 
-screenshots/
+screenshots/01_control_flow.PNG — Control Flow SSIS
 
-01_control_flow.PNG - Control Flow do SSIS
+screenshots/02_data_flow.PNG — Data Flow SSIS
 
-02_data_flow.PNG - Data Flow do SSIS
+🚀 Impacto do Data Warehouse
+❌ Antes
 
-🎯 OBJETIVO DO DATA WAREHOUSE
-Construir o cérebro analítico do projeto - um Data Warehouse dimensional profissional que transforma os 92 trimestres de dados brutos do IBGE em insights estratégicos através de um modelo estrela otimizado para análise.
+92 colunas horizontais (Excel)
 
-📸 EVIDÊNCIAS VISUAIS DO PROJETO
-🔄 Processo ETL no SSIS - Control Flow
-https://screenshots/01_control_flow.PNG
+Análise limitada
 
-🔄 Processo ETL no SSIS - Data Flow
-https://screenshots/02_data_flow.PNG
+Sem auditoria
 
-📐 Diagrama do Modelo Estrela
-https://diagrams/diagrama_sql.PNG
+Processo manual
 
-🏗️ ARQUITETURA DO MODELO ESTRELA
-text
-⭐ MODELO ESTRELA - OTIMIZADO PARA ANÁLISE ⭐
+✅ Depois
 
-    [FATO_DESEMPREGO] 
-         ▲          
-         │          
-    [DIM_TEMPO]    
+Modelo dimensional
 
-📊 92 FATOS = 92 trimestres (dados nacionais do Brasil)
-Tabela Fato: fato_desemprego - Métricas de desemprego por período
-Dimensão: dim_tempo - Dimensão temporal com hierarquias
+Histórico desde 2018
 
-🚀 IMPACTO DO DATA WAREHOUSE
-✅ ANTES:
-92 colunas horizontais (formato transposto)
+KPIs com meta de 8%
 
-Análise limitada ao Excel
+Integração com Power BI
 
-Sem histórico ou auditoria
+Auditoria automática
 
-Processamento manual
-
-✅ DEPOIS:
-Modelo dimensional para análise temporal
-
-Histórico completo desde 2018
-
-KPIs em tempo real com meta de 8%
-
-Integração total com Power BI e SSAS
-
-Auditoria completa de todas as transformações
-
-📈 DADOS TRANSFORMADOS
+📈 Dados Transformados
 Métrica	Valor	Significado
-Período Analisado	92 trimestres	jan/2018 a out/2025
-Taxa Mínima	5.4%	Recorde histórico (2025)
-Taxa Máxima	14.9%	Pico da pandemia (2020)
+Período Analisado	92 trimestres	2018–2025
+Taxa Mínima	5.4%	Recorde histórico
+Taxa Máxima	14.9%	Pico da pandemia
 Região	Brasil	Dados nacionais
-Total de Registros	92	Um por trimestre
-Performance	<1s por consulta	Otimizado com índices
-🔥 DESTAQUES TÉCNICOS
-🏆 ENGENHARIA DE DADOS PROFISSIONAL
-sql
--- PERFORMANCE: Índices clusterizados
+Total de Registros	92	1 por trimestre
+Performance	<1s	Queries otimizadas
+🔥 Destaques Técnicos
+⚡ Performance — Índice Clusterizado
 CREATE CLUSTERED INDEX IX_FATO_TEMPO 
 ON fato_desemprego(id_tempo);
 
--- QUALIDADE: Constraints de validação
+✅ Qualidade — Constraint de Validação
 ALTER TABLE fato_desemprego
 ADD CONSTRAINT CK_TAXA_RANGE 
 CHECK (taxa_desemprego BETWEEN 0 AND 100);
 
--- AUDITORIA: Logging automático
-INSERT INTO ctrl_etl_desemprego (status, total_registros) VALUES ('SUCESSO', 92);
-📊 KPIs IMPLEMENTADOS
-Meta de Desemprego ≤ 8% (semaforização automática)
+🧾 Auditoria — Logging ETL
+INSERT INTO ctrl_etl_desemprego (status, total_registros)
+VALUES ('SUCESSO', 92);
 
-Tendência Trimestral (melhora/piora)
+📊 KPIs Implementados
 
-Análise Sazonal (padrões por trimestre)
+Meta ≤ 8% (semáforo automático)
 
-Evolução Anual (comparativo ano a ano)
+Tendência trimestral
 
-🛠️ COMO EXECUTAR - 3 PASSOS
-1️⃣ CRIAR A FUNDAÇÃO
-sql
--- Executar primeiro:
+Análise sazonal
+
+Evolução anual
+
+🛠️ Como Executar
+1️⃣ Criar Estrutura
+
+Executar:
+
 scripts/01_create_tables.sql
-2️⃣ CARREGAR OS 92 REGISTROS
-sql
--- Executar depois:
+
+2️⃣ Carregar Dados
+
+Executar:
+
 scripts/02_insert_data.sql
-3️⃣ VALIDAR COM CONSULTAS
-sql
--- Testar o DW:
+
+3️⃣ Validar
+
+Executar:
+
 scripts/03_sample_queries.sql
-🌟 SCRIPTS DISPONÍVEIS
-📄 01_create_tables.sql - A BASE
-dim_tempo → Dimensão temporal com hierarquias
 
-fato_desemprego → Tabela fato com métricas
+🔗 Integração com o Projeto (Pipeline Completo)
 
-ctrl_etl_desemprego → Sistema de auditoria
+- `01_data_raw/` → Dados brutos do IBGE em Excel (fonte original)
+- `02_staging/` → Limpeza e padronização (tidy data em CSV)
+- `03_etl_ssis/` → Pipeline de carga para o DW
+- `04_orchestration/` → Agendamento com SQL Agent
+- `05_data_warehouse/` → Modelo dimensional e queries
+- `06_power_bi/` → Dashboards e KPIs
 
-📄 02_insert_data.sql - OS DADOS
-92 trimestres reais do IBGE (2018-2025)
+🏁 Próxima Etapa
 
-Dados nacionais (Brasil)
+➡️ 06_power_bi/
+Dashboard interativo com KPIs, tendências e comparativos regionais.
 
-Validação e auditoria integrada
+Status: ✅ Data Warehouse 100% operacional
+🚀 Pronto para consumo analítico no Power BI
 
-Processo idempotente (pode rodar várias vezes)
+⚠️ SE AINDA NÃO APARECER A IMAGEM
 
-📄 03_sample_queries.sql - AS CONSULTAS
-Evolução Anual - Tendência macro
+Confere se os nomes estão idênticos (maiúsculo/minúsculo conta no GitHub):
 
-Análise Trimestral - Comparativo entre trimestres
+screenshots/01_control_flow.PNG
+screenshots/02_data_flow.PNG
+diagrams/diagrama_sql.PNG
 
-Média Móvel - Suavização estatística
 
-KPI da Meta - Verde/Amarelo/Vermelho
+Se tiver .png minúsculo e no README .PNG, não aparece.
 
-Top 5 Piores Trimestres - Foco em problemas
-
-Análise Sazonal - Padrões ocultos
-
-Performance ETL - Monitoramento
-
-Drill-Down Temporal - Análise detalhada
-
-🔗 INTEGRAÇÃO COM ECOSSISTEMA
-03_etl_ssis/ → Alimentação contínua
-
-04_orchestration/ → Automação via SQL Agent
-
-06_power_bi/ → Visualização profissional
-
-07_documentation/ → Documentação corporativa
-
-🏆 BENEFÍCIOS CONQUISTADOS
-Área	Antes	Depois
-Performance	Minutos em Excel	Segundos no DW
-Escalabilidade	92 colunas limitadas	Modelo expansível
-Confiabilidade	Dados manuais	Auditoria completa
-Análise	Gráficos simples	Drill-down temporal
-Manutenção	Frágil e manual	Automatizado e robusto
-📋 CHECKLIST DE EXCELÊNCIA
-Modelo Estrela implementado
-
-92 trimestres carregados
-
-Índices otimizados para queries
-
-Sistema de auditoria em tempo real
-
-KPIs configurados com semáforo
-
-Integração completa com pipeline ETL
-
-Diagramas técnicos em diagrams/
-
-Screenshots em screenshots/
-
-🚨 ALERTAS DE PERFORMANCE
-text
-⚡ CONSULTAS OTIMIZADAS: Todas as queries < 1s
-🔒 TRANSACTION SAFE: Rollback em caso de erro
-📊 STATISTICS UPDATED: Otimizador sempre atualizado
-🎯 INDEX COVERAGE: 100% das queries cobertas
-📞 SUPORTE TÉCNICO
-Problemas com carga de dados?
-
-Verifique ctrl_etl_desemprego para logs
-
-Execute scripts/03_sample_queries.sql para validação
-
-Consulte documentation/etl_process.md para troubleshooting
-
-Performance lenta?
-
-Verifique índices com sp_helpindex
-
-Analise estatísticas com DBCC SHOW_STATISTICS
-
-Otimize com plano de execução
-
-🏁 PRÓXIMA ETAPA: 06_power_bi/
-text
-🔥 PREPARE-SE PARA: Dashboard interativo em Power BI
-🎨 VISUALIZAÇÕES: Gráficos de tendência, KPIs
-📱 MULTIPLATAFORMA: Desktop, Web, Mobile
-🤖 IA INTEGRADA: Insights automáticos
-Este Data Warehouse transforma dados brutos do IBGE em inteligência estratégica para decisões econômicas. Cada um dos 92 registros representa um trimestre de análise! 🚀
-
-Status: ✅ DATA WAREHOUSE 100% OPERACIONAL
-Próxima etapa: 06_power_bi/ → Dashboard de Visualização
-
+Se quiser, já te entrego o próximo README da pasta 06_power_bi no mesmo padrão visual de portfólio top de vaga PJ 💼🔥
