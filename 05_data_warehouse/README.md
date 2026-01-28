@@ -18,7 +18,7 @@ scripts/
 
 diagrams/
 
-diagrama_sql.png - Diagrama do modelo de dados
+diagrama_sql.PNG - Diagrama do modelo de dados
 
 screenshots/
 
@@ -26,20 +26,18 @@ screenshots/
 
 02_data_flow.PNG - Data Flow do SSIS
 
-placeholder.txt
+🎯 OBJETIVO DO DATA WAREHOUSE
+Construir o cérebro analítico do projeto - um Data Warehouse dimensional profissional que transforma os 92 trimestres de dados brutos do IBGE em insights estratégicos através de um modelo estrela otimizado para análise.
 
 📸 Diagramas e Screenshots
-Diagrama do Modelo de Dados
-https://diagrams/diagrama_sql.png
+Diagrama do Modelo de Dados (Modelo Estrela)
+https://diagrams/diagrama_sql.PNG
 
 Control Flow (Orquestração SSIS)
 https://screenshots/01_control_flow.PNG
 
 Data Flow (Pipeline de Dados SSIS)
 https://screenshots/02_data_flow.PNG
-
-🎯 OBJETIVO DO DATA WAREHOUSE
-Construir o cérebro analítico do projeto - um Data Warehouse dimensional profissional que transforma os 92 trimestres de dados brutos do IBGE em insights estratégicos através de um modelo estrela otimizado para análise.
 
 🏗️ ARQUITETURA DO MODELO ESTRELA
 text
@@ -224,4 +222,3 @@ Este Data Warehouse transforma dados brutos do IBGE em inteligência estratégic
 
 Status: ✅ DATA WAREHOUSE 100% OPERACIONAL
 Próxima etapa: 06_power_bi/ → Dashboard de Visualização
-
