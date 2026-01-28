@@ -4,7 +4,9 @@
 
 ## 📐 Diagrama do Modelo de Dados (Modelo Estrela)
 
-![Diagrama SQL](05_data_warehouse/diagrams/diagrama_sql.PNG)
+### 📐 Teste Diagrama
+![Teste](diagrams/diagrama_sql.PNG)
+
 
 
 ---
