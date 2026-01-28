@@ -1,0 +1,8 @@
+Placeholder para evidências visuais de validação de dados.
+
+Nesta pasta serão armazenados:
+- Prints de execução bem-sucedida do ETL
+- Logs de validação
+- Evidências de conferência de volume de dados
+
+As imagens são utilizadas no README para demonstrar a camada de Data Quality.
