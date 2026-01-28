@@ -4,9 +4,7 @@
 
 ## 📐 Diagrama do Modelo de Dados (Modelo Estrela)
 
-### 📐 Teste Diagrama
-![Teste](diagrams/diagrama_sql.PNG)
-
+![Diagrama](diagrams/diagrama_sql.PNG)
 
 
 ---
