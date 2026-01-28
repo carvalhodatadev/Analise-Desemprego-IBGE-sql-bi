@@ -1,13 +1,13 @@
 📊 Data Warehouse - Análise de Desemprego IBGE
 📐 Diagrama do Modelo de Dados
-https://raw.githubusercontent.com/carvalhodatadev/Analise-Desemprego-IBGE-sql-bi/main/05_data_warehouse/diagrams/diagrama_sql.png
+https://../05_data_warehouse/diagrams/diagrama_sql.png
 
 🔄 Processo ETL — Evidências no SSIS
 ⚙️ 01 — Control Flow (Orquestração)
-https://raw.githubusercontent.com/carvalhodatadev/Analise-Desemprego-IBGE-sql-bi/main/05_data_warehouse/screenshots/01_control_flow.PNG
+https://../05_data_warehouse/screenshots/01_control_flow.PNG
 
 🔁 02 — Data Flow (Pipeline de Dados)
-https://raw.githubusercontent.com/carvalhodatadev/Analise-Desemprego-IBGE-sql-bi/main/05_data_warehouse/screenshots/02_data_flow.PNG
+https://../05_data_warehouse/screenshots/02_data_flow.PNG
 
 🎯 OBJETIVO DO DATA WAREHOUSE
 Construir o cérebro analítico do projeto — um Data Warehouse dimensional profissional que transforma os 92 trimestres de dados brutos do IBGE em insights estratégicos através de um modelo estrela otimizado para análise.
@@ -114,4 +114,3 @@ Este Data Warehouse transforma dados brutos do IBGE em inteligência estratégic
 
 Status: ✅ DATA WAREHOUSE 100% OPERACIONAL
 Próxima etapa: 06_power_bi/ → Dashboard de Visualização
-
