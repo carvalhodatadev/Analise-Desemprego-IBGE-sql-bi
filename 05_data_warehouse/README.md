@@ -4,14 +4,14 @@ Implementar o cérebro analítico do projeto - um Data Warehouse dimensional pro
 
 🏗️ Arquitetura do Modelo Estrela
 Diagrama do Modelo de Dados
-https://diagrams/diagrama_sql.png
+https://diagrams/diagrama_sql.PNG
 
 🔄 Processo ETL no SSIS
 Control Flow (Orquestração)
-https://screenshots/01_control_flow.png
+https://screenshots/01_control_flow.PNG
 
 Data Flow (Pipeline de Dados)
-https://screenshots/02_data_flow.png
+https://screenshots/02_data_flow.PNG
 
 📁 Arquivos Nesta Pasta
 README.md - Esta documentação
@@ -31,13 +31,13 @@ scripts/
 
 diagrams/
 
-diagrama_sql.png - Diagrama do modelo de dados
+diagrama_sql.PNG - Diagrama do modelo de dados
 
 screenshots/
 
-01_control_flow.png - Control Flow do SSIS
+01_control_flow.PNG - Control Flow do SSIS
 
-02_data_flow.png - Data Flow do SSIS
+02_data_flow.PNG - Data Flow do SSIS
 
 📊 Dados Transformados
 Período Analisado: 92 trimestres (jan/2018 a out/2025)
