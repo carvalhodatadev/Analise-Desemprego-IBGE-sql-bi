@@ -1,0 +1,2 @@
+Esta pasta é para screenshots do data warehouse.
+Exemplos: tabelas criadas, consultas, resultados.
