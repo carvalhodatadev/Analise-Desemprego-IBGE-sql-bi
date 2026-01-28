@@ -16,7 +16,7 @@ Implementar a automação completa do processo ETL através do SQL Server Agent,
 *Job `ETL_Desemprego_Diario` configurado para execução automática diária às 08:00 - Interface do SQL Server Management Studio mostrando a configuração completa do agendamento*
 
 ### 🔄 Fluxo de Automação
-```mermaid
+
 graph LR
     A[Agendamento<br>Diário 08:00] --> B{SQL Server Agent};
     B --> C[Executar Pacote SSIS];
