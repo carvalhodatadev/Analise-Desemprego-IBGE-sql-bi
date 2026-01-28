@@ -4,7 +4,7 @@
 
 ## 📐 Diagrama do Modelo de Dados (Modelo Estrela)
 
-[![Diagrama Modelo Estrela](diagrams/diagrama_sql.PNG)](https://github.com/carvalhodtadev/Analise-Desemprego-IBGE-sql-bi/blob/main/05_data_warehouse/diagrams/diagrama_sql.PNG)
+![Diagrama SQL](diagrams/diagrama_sql.PNG)
 
 ---
 
