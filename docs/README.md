@@ -5,6 +5,7 @@ Esta pasta contém toda a documentação técnica e analítica do projeto de eng
 O objetivo desta documentação é demonstrar boas práticas profissionais, facilitar manutenção futura e tornar o projeto totalmente compreensível para recrutadores, professores e equipes técnicas.
 
 📁 O que Tem Nesta Pasta
+
 docs/
 ├── README.md                     # Este arquivo (índice da documentação)
 ├── architecture.md               # Arquitetura geral do pipeline de dados
