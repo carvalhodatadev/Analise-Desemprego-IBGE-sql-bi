@@ -218,8 +218,6 @@ Otimize com plano de execução
 
 🔥 PREPARE-SE PARA: Dashboard interativo em Power BI
 🎨 VISUALIZAÇÕES: Gráficos de tendência, KPIs, mapas
-📱 MULTIPLATAFORMA: Desktop, Web, Mobile
-🤖 IA INTEGRADA: Insights automáticos com Q&A
 
 🚀 Conclusão
 
