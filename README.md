@@ -5,14 +5,13 @@ Projeto completo de engenharia de dados para análise da taxa de desemprego no B
 
 🏗️ Arquitetura do Sistema
 
-text
-
+Pipeline Geral:
 📥 COLETA → ⚙️ TRANSFORMAÇÃO → 🗄️ ARMAZENAMENTO → 📊 VISUALIZAÇÃO
 
-↓            ↓                 ↓                   ↓
-01_data_raw  02_staging       03_etl_ssis        05_data_warehouse
-                               04_orchestration   06_data_quality
-                                                 07_power_bi
+↓             ↓                  ↓                   ↓
+01_data_raw   02_staging       03_etl_ssis        05_data_warehouse
+                                04_orchestration   06_data_quality
+                                                  07_power_bi
 
 📁 Estrutura do Repositório
 01_data_raw/ - Dados Brutos
@@ -82,7 +81,7 @@ Visão geral do ETL e estratégias de qualidade
 🚀 Tecnologias Utilizadas
 Camada	Tecnologia	Uso Específico
 Coleta	IBGE API/CSV	Dados oficiais da tabela 6381
-Transformação	Excel, SQL	Transposição horizontal→vertical
+Transformação	Excel, SQL	Transposição horizontal → vertical
 ETL	SSIS (SQL Server)	Pipeline de dados automatizado
 Orquestração	SQL Server Agent	Agendamento e automação
 Armazenamento	SQL Server	Data Warehouse dimensional
@@ -109,7 +108,7 @@ Variação Trimestral (comparação trimestre anterior)
 
 Variação Anual (comparação ano anterior)
 
-Status da Meta (semáforo: ≤8% verde, 8-12% amarelo, >12% vermelho)
+Status da Meta (semáforo: ≤8% verde, 8–12% amarelo, >12% vermelho)
 
 Tendência (indicador de alta/baixa)
 
@@ -149,10 +148,9 @@ Configurar conexão com o Data Warehouse
 
 Atualizar dados e explorar
 
-📊 1. PANORAMA COMPLETO DA EVOLUÇÃO
+📈 1. Panorama Completo da Evolução
 
 Trajetória da Taxa de Desemprego:
-text
 2018: ~13.2% → 2020: ⚡ 14.9% (pico) → 2025: 🎯 5.4% (recorde)
 Queda total: 9.5 pontos percentuais em 7 anos
 Redução de 64% na taxa de desemprego desde o pico
@@ -168,10 +166,9 @@ Ano	Taxa Média	Tendência	Evento Chave
 2023	~8.1%	📉 Meta atingida	Estabilização
 2024	~6.8%	📉 Novo recorde	Mercado aquecido
 2025	~5.4%	📉 Mínimo histórico	Otimismo econômico
-🔥 2. INSIGHTS CHAVE DESCOBERTOS
-🏥 IMPACTO DA PANDEMIA (2020)
+🔥 2. Insights Chave Descobertos
+🏥 Impacto da Pandemia (2020)
 
-text
 📌 Pico: 14.9% (trimestre abr-mai-jun 2020)
 
 Aumento de 3.4 pontos percentuais em apenas 3 trimestres
@@ -180,51 +177,47 @@ Recuperação rápida: Em 18 meses retornou aos níveis pré-pandemia
 
 Resiliência econômica: Mercado se adaptou com home office e digitalização
 
-🎯 META DE 8% - MARCO HISTÓRICO
+🎯 Meta de 8% - Marco Histórico
 
-text
 📌 Primeiro trimestre abaixo de 8%: jan-fev-mar 2023
 
 Meta governamental atingida 2 anos após pico da pandemia
 
-Manutenção consistente: Mantém abaixo de 8% por 10+ trimestres consecutivos
+Mantém abaixo de 8% por 10+ trimestres consecutivos
 
-Sinal positivo: Indica recuperação estrutural, não apenas cíclica
+Sinal positivo: Indica recuperação estrutural
 
-📉 TENDÊNCIA DE LONGO PRAZO
+📉 Tendência de Longo Prazo
 
-text
-📌 Queda média de 1.2 pontos percentuais por ano
+Queda média de 1.2 pontos percentuais por ano
 
-Consistência: 22 trimestres consecutivos de queda (desde 2020)
+22 trimestres consecutivos de queda (desde 2020)
 
-Velocidade: Queda mais rápida que em crises anteriores
+Indica mudanças estruturais no mercado de trabalho
 
-Sustentabilidade: Indica mudanças estruturais no mercado de trabalho
+📊 3. Padrões Sazonais
 
-📊 3. PADRÕES SAZONAIS REVELADOS
-🗓️ SAZONALIDADE TRIMESTRAL:
+Sazonalidade Trimestral:
 
-text
-1º Trimestre (jan-mar): 📈 Leve alta (fim de contratos temporários)
+1º Trimestre (jan-mar): 📈 Leve alta
+
 2º Trimestre (abr-jun): 📊 Estabilidade
-3º Trimestre (jul-set): 📉 Queda (contratações do segundo semestre)
-4º Trimestre (out-dez): 📉 Maior queda (contratações natalinas)
 
-📅 PADRÕES ANUAIS CONSISTENTES:
+3º Trimestre (jul-set): 📉 Queda
 
-Anos pares (2018, 2020, 2022, 2024): Taxas mais altas
+4º Trimestre (out-dez): 📉 Maior queda
 
-Anos ímpares (2019, 2021, 2023, 2025): Taxas mais baixas
+Padrões Anuais:
 
-Ciclo econômico: Sincronizado com ciclos políticos de 4 anos
+Anos pares: taxas mais altas
 
-🏆 4. RECORDES E MARCO HISTÓRICO
-🥇 RECORDES POSITIVOS:
+Anos ímpares: taxas mais baixas
 
-text
+🏆 4. Recordes e Marcos Históricos
 
-🏆 5.4% (2025): MENOR TAXA DA HISTÓRIA
+Recordes Positivos:
+
+🏆 5.4% (2025) - menor taxa da história
 
 🏆 10 trimestres consecutivos abaixo de 8%
 
@@ -232,190 +225,168 @@ text
 
 🏆 Redução de 64% desde o pico
 
-📈 TENDÊNCIAS DESTACADAS:
+Tendências Destacadas:
 
-Digitalização acelerada: Empregos em TI e remotos cresceram
+Digitalização acelerada: empregos em TI e remotos cresceram
 
-Serviços dominantes: Setor terciário responde por 70% das vagas
+Serviços dominantes: setor terciário responde por 70% das vagas
 
-Informalidade reduzida: Formalização aumentou pós-pandemia
+Informalidade reduzida pós-pandemia
 
-Educação premium: Cargos técnicos e especializados em alta
+Educação premium: cargos técnicos em alta
 
-🔮 5. PROJEÇÕES E IMPLICAÇÕES
-📊 PARA OS PRÓXIMOS ANOS:
+🔮 5. Projeções e Implicações
 
-Estabilização: Expectativa de oscilar entre 5-7%
+Para os Próximos Anos:
 
-Novos empregos: Tecnologia e sustentabilidade como motores
+Estabilização: 5-7%
 
-Qualificação: Gap entre vagas e qualificação é novo desafio
+Novos empregos: tecnologia e sustentabilidade
 
-🏢 IMPLICAÇÕES PARA EMPRESAS:
+Qualificação: gap entre vagas e habilidades
 
-text
+Implicações:
 
-💼 Mercado competitivo: Retenção de talentos é crucial
+Empresas: retenção de talentos, novas habilidades digitais, trabalho híbrido
 
-💡 Novas habilidades: Digitalização obrigatória
+Políticas públicas: educação técnica, indicadores ágeis, parcerias
 
-🌍 Remoto híbrido: Novo padrão de trabalho
+📊 6. Visualizações-Chave
 
-🏛️ IMPLICAÇÕES PARA POLÍTICAS PÚBLICAS:
+Gráfico de Tendência:
 
-text
+2018 📉📉📉📉
+2019 📉📉📉📉
+2020 📈📈📈📈
+2021 📉📉📉📉
+2022 📉📉📉📉
+2023 📉📉📉📉
+2024 📉📉📉📉
+2025 📉📉📉📉
 
-🎓 Educação técnica: Alinhamento com demandas do mercado
 
-📊 Dados em tempo real: Necessidade de indicadores ágeis
+Status por Ano:
 
-🤝 Parcerias público-privadas: Para qualificação acelerada
-
-📈 6. VISUALIZAÇÕES-CHAVE DOS DADOS
-📉 GRÁFICO DE TENDÊNCIA:
-
-text
-2018: 📉📉📉📉
-2019: 📉📉📉📉
-2020: 📈📈📈📈 (PICO)
-2021: 📉📉📉📉
-2022: 📉📉📉📉
-2023: 📉📉📉📉 (ATINGE 8%)
-2024: 📉📉📉📉
-2025: 📉📉📉📉 (RECORDE)
-
-🎯 STATUS POR ANO:
-
-text
 2018: 🔴 Acima da meta
+
 2019: 🔴 Acima da meta
-2020: 🔴🔴🔴🔴 MUITO ACIMA
+
+2020: 🔴🔴🔴🔴 Muito acima
+
 2021: 🔴 Acima da meta
+
 2022: 🟡 Próximo da meta
-2023: 🟢✅ ATINGIU A META
-2024: 🟢✅✅✅ SUPEROU
-2025: 🟢🎯🏆 RECORDE HISTÓRICO
 
-💡 7. LIÇÕES APRENDIDAS DOS DADOS
-✅ O QUE FUNCIONOU:
+2023: 🟢✅ Atingiu a meta
 
-Resiliência digital: Empresas que digitalizaram sobreviveram
+2024: 🟢✅✅✅ Superou
 
-Flexibilidade: Remoto permitiu continuidade operacional
+2025: 🟢🎯🏆 Recorde histórico
 
-Políticas ativas: Programas de manutenção de emprego
+💡 7. Lições Aprendidas
 
-⚠️ ALERTAS FUTUROS:
+O que funcionou:
 
-Automação: 30% dos empregos atuais podem ser automatizados
+Resiliência digital
 
-Qualificação gap: Novas vagas exigem novas habilidades
+Flexibilidade e home office
 
-Concentração: Empregos concentrados em poucas regiões
+Políticas ativas de emprego
 
-🚀 OPORTUNIDADES:
+Alertas futuros:
 
-Economia verde: Empregos em sustentabilidade
+Automação pode impactar 30% dos empregos
 
-Tecnologia: Déficit de 300k profissionais de TI
+Gap de qualificação exigirá novas habilidades
 
-Saúde: Envelhecimento populacional demanda profissionais
+Concentração de empregos em regiões específicas
 
-📊 8. ANÁLISE COMPARATIVA INTERNACIONAL
-🌎 POSIÇÃO DO BRASIL:
+Oportunidades:
 
-text
-📌 2020: Entre os mais afetados pela pandemia
-📌 2023: Recuperação mais rápida que a média global
-📌 2025: Taxa comparável a países desenvolvidos
+Economia verde
 
-📈 TENDÊNCIA GLOBAL:
+Tecnologia: déficit de 300k profissionais de TI
 
-EUA/Europa: Recuperação mais lenta
+Saúde: envelhecimento populacional
 
-Ásia: Menos impacto, retomada mais rápida
+📊 8. Análise Comparativa Internacional
+
+Posição do Brasil:
+
+2020: Entre os mais afetados pela pandemia
+
+2023: Recuperação mais rápida que a média global
+
+2025: Taxa comparável a países desenvolvidos
+
+Tendência Global:
+
+EUA/Europa: recuperação lenta
+
+Ásia: menos impacto, retomada mais rápida
 
 América Latina: Brasil lidera recuperação
 
-🎯 9. KPIs PARA MONITORAMENTO CONTÍNUO
-📍 INDICADORES-CHAVE:
+🎯 9. KPIs para Monitoramento Contínuo
 
-Taxa abaixo de 8%: Mantenha por 12+ trimestres
+Indicadores-chave:
 
-Formalização: Aumente para 70% dos empregos
+Taxa abaixo de 8%: manter por 12+ trimestres
 
-Renda média: Crescimento real de 2% ao ano
+Formalização: 70% dos empregos
 
-Qualificação: Reduza gap skills em 30%
+Renda média: crescimento real de 2% ao ano
 
-📊 MÉTRICAS DE SUCESSO:
+Qualificação: reduzir gap skills em 30%
 
-✅ Meta: ≤8% (atingida em 2023)
+Métricas de sucesso:
 
-✅ Desafio: ≤6% (atingido em 2024)
+✅ Meta: ≤8% (atingida 2023)
 
-✅ Excelência: ≤5% (atingido em 2025)
+✅ Desafio: ≤6% (atingida 2024)
 
-🏁 10. CONCLUSÃO ESTRATÉGICA
-Impacto do Pipeline
+✅ Excelência: ≤5% (atinga 2025)
+
+🏁 10. Conclusão Estratégica
+
+Impacto do Pipeline:
 
 Redução de 95% no tempo de processamento manual
 
-Atualização automática diária garantida
+Atualização automática diária
 
-Qualidade assegurada por múltiplas validações
+Qualidade assegurada por validações
 
-Visualização em tempo real para tomada de decisão
+Visualização em tempo real
 
-🏆 Destaques Técnicos
+Destaques Técnicos:
 
-✅ Transformação Complexa: Conversão de dados transpostos (92 colunas → 92 linhas), processo documentado
+Transformação complexa: 92 colunas → 92 linhas
 
-✅ Pipeline Resiliente: Tratamento completo de erros no SSIS, retry automático via SQL Agent, logging em todas as etapas
+Pipeline resiliente com retry automático
 
-✅ Arquitetura Profissional: Separação clara de responsabilidades (raw/staging/DW), modelo dimensional otimizado
+Arquitetura profissional: separação raw/staging/DW
 
-✅ Automação Completa: Job diário, notificações, alertas, monitoramento
+Automação completa: alertas e monitoramento
 
-🔗 Links Importantes
+Links importantes:
 
-Documentação Técnica: Arquitetura Completa, Dicionário de Dados, Visão Geral do ETL
+Documentação: docs/
 
-Dashboard Power BI: Configuração, Medidas DAX, Modelo de Dados
+Dashboard Power BI: 07_power_bi/
 
-📞 Suporte e Contato
+Suporte:
 
 Autor: carvalhodatadev
 
-Repositório: GitHub    https://github.com/carvalhodatadev/Analise-Desemprego-IBGE-sql-bi
+Repositório: GitHub
 
-Branch: main
+Status: ✅ 100% completo e funcional
 
-Status: ✅ Completo e funcional
+Licença:
 
-Dúvidas Técnicas: Consulte a documentação em docs/, verifique logs e execute scripts de validação em 06_data_quality/
+Projeto para portfólio, dados públicos do IBGE.
 
-📄 Licença
-
-Este projeto é para portfólio e demonstração técnica. Os dados são públicos do IBGE e podem ser utilizados para estudos e análises.
-
-🚀 Conclusão
-
-Este projeto demonstra habilidades completas em engenharia de dados:
-
-✅ ETL/ELT profissional com SSIS
-
-✅ Data Warehouse dimensional com modelagem estrela
-
-✅ Automação com SQL Server Agent
-
-✅ Qualidade de dados com validações automatizadas
-
-✅ Visualização com Power BI e DAX
-
-✅ Documentação técnica completa
-
-Transformamos dados brutos do IBGE em inteligência estratégica para análise econômica do Brasil! 🇧🇷📊
-
+Conclusão:
+Transformação de dados brutos em inteligência estratégica! 🇧🇷📊
 Última atualização: 28/01/2026
-Status do projeto: ✅ 100% COMPLETO E FUNCIONAL
