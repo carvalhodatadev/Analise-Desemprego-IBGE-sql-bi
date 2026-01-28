@@ -21,10 +21,6 @@ Aqui os dados são transformados em **insights visuais, KPIs e análises interat
 ### 🚦 KPIs Principais
 ![KPIs](screenshots/03_kpis_principais.PNG)
 
----
-
-### 🎛️ Filtros Interativos
-![Filtros](screenshots/04_filtros_interativos.PNG)
 
 ---
 
@@ -134,10 +130,6 @@ Esta documentação geral do módulo de visualização em Power BI.
 - **03_kpis_principais.PNG**  
   Cartões de KPI com taxa atual, meta e tendência.
 
-- **04_filtros_interativos.PNG**  
-  Segmentações e filtros para análise por período e região.
-
----
 
 ## 🔗 Integração com o Projeto Completo
 
