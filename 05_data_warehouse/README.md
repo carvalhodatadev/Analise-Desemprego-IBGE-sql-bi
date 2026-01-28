@@ -2,44 +2,10 @@
 📐 Diagrama do Modelo de Dados
 ⭐ Modelo Estrela do Data Warehouse (SQL Server)
 
-Representação da modelagem dimensional com tabela fato e dimensões, otimizada para análises analíticas.
-
-Componentes do Modelo:
-
-Tabela Fato: fato_desemprego
-
-Dimensões: dim_tempo, dim_regiao
-
-Relacionamentos 1:N
-
-Chaves substitutas para performance
-
 🔄 Processo ETL — Evidências no SSIS
-⚙️ 01 — Control Flow (Orquestração do Processo)
+⚙️ 01 — Control Flow (Orquestração)
 
-Fluxo responsável por controlar a execução das etapas do processo ETL.
-
-Etapas:
-
-Carga do CSV para staging
-
-Execução de procedures de processamento do DW
-
-Controle de dependências entre tarefas
-
-🔁 02 — Data Flow (Pipeline de Transformação e Carga)
-
-Pipeline responsável pela movimentação e transformação dos dados.
-
-Componentes:
-
-Origem em arquivo CSV
-
-Coluna Derivada
-
-Conversão de Tipos de Dados
-
-Destino OLE DB (Data Warehouse)
+🔁 02 — Data Flow (Pipeline de Dados)
 
 🎯 OBJETIVO DO DATA WAREHOUSE
 
@@ -151,25 +117,16 @@ Ranking Regional (benchmark entre estados)
 Análise Sazonal (padrões por trimestre)
 
 🛠️ COMO EXECUTAR — 3 PASSOS
-1️⃣ CRIAR A FUNDAÇÃO
 
-Executar: scripts/01_create_tables.sql
+1️⃣ Executar scripts/01_create_tables.sql
+2️⃣ Executar scripts/02_insert_data.sql
+3️⃣ Executar scripts/03_sample_queries.sql
 
-2️⃣ CARREGAR OS DADOS
-
-Executar: scripts/02_insert_data.sql
-(92 registros do IBGE 2018–2025)
-
-3️⃣ VALIDAR COM CONSULTAS
-
-Executar: scripts/03_sample_queries.sql
-
-🔗 PRÓXIMA ETAPA
+🏁 PRÓXIMA ETAPA
 
 ➡️ 06_power_bi/ — Construção do dashboard interativo
-🎨 KPIs, gráficos de tendência e mapas
-📱 Desktop, Web e Mobile
-🤖 Insights automáticos com Q&A
+🎨 KPIs, gráficos de tendência, análise temporal 
+
 
 🚀 Conclusão
 
