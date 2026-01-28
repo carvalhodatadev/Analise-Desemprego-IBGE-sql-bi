@@ -1,87 +1,180 @@
-# 🏗️ 05 - Data Warehouse (Armazém de Dados)
+ 📊 Data Warehouse - Análise de Desemprego IBGE
 
-## 📌 Objetivo
-Armazenar os dados de desemprego de forma organizada e otimizada para análise, permitindo consultas rápidas e relatórios detalhados.
+## 📁 Estrutura da Pasta
+05_data_warehouse/
+├── 📄 README.md # Este arquivo
+├── 📂 documentation/
+│ ├── 📄 dimensional_model.md # Modelo dimensional do DW
+│ └── 📄 etl_process.md # Processo ETL para DW
+├── 📂 scripts/
+│ ├── 📄 01_create_tables.sql # Criação das tabelas do DW
+│ ├── 📄 02_insert_data.sql # Inserção dos 92 registros (NOVO)
+│ └── 📄 03_sample_queries.sql # Consultas de exemplo (NOVO)
+├── 📂 diagrams/ # Diagramas do DW
+│ └── 📄 placeholder.txt
+└── 📂 screenshots/ # Screenshots do DW
+└── 📄 placeholder.txt
 
-## 🏛️ O que é um Data Warehouse?
-Um data warehouse é um banco de dados especializado para análise de dados. Ele armazena informações históricas de forma organizada, facilitando a criação de relatórios e dashboards.
+text
 
-## 📊 Nosso Modelo de Dados
+## 🎯 Objetivo
 
-### 📋 Tabelas principais:
-1. **dim_tempo** - Informações sobre tempo (ano, trimestre, mês)
-2. **dim_localidade** - Informações sobre localidades (país, região)
-3. **fato_desemprego** - Dados principais sobre desemprego (taxas, variações)
+Implementar o Data Warehouse para armazenamento e análise dos dados de desemprego do IBGE, seguindo o modelo estrela (star schema).
 
-### 🔗 Como as tabelas se conectam:
-- `fato_desemprego` tem ligação com `dim_tempo` (quando ocorreu)
-- `fato_desemprego` tem ligação com `dim_localidade` (onde ocorreu)
+## 📊 Modelo Dimensional
 
-## 🔧 O que foi implementado
+### Schema Estrela (Star Schema)
+┌─────────────────────────────────────────────────────────┐
+│ fato_desemprego │
+├─────────────────────────────────────────────────────────┤
+│ PK | id_fato (INT) │
+│ FK | id_tempo (INT) → dim_tempo │
+│ FK | id_regiao (INT) → dim_regiao │
+│ | taxa_desemprego (DECIMAL) │
+│ | total_pessoas (INT) │
+│ | pessoas_desempregadas (INT) │
+│ | pessoas_ocupadas (INT) │
+│ | forca_trabalho (INT) │
+│ | taxa_participacao (DECIMAL) │
+│ | data_carga (DATETIME) │
+└─────────────────────────────────────────────────────────┘
+▲ ▲
+│ │
+┌──────────┴─────────┐ ┌─────────┴──────────┐
+│ dim_tempo │ │ dim_regiao │
+├────────────────────┤ ├────────────────────┤
+│ PK | id_tempo │ │ PK | id_regiao │
+│ | ano │ │ | regiao │
+│ | trimestre │ │ | estado │
+│ | mes │ │ | sigla_estado │
+│ | nome_mes │ │ | municipio │
+│ | data_completa │ │ | codigo_ibge │
+│ | semestre │ │ | populacao_... │
+│ | trimestre_ano │ └────────────────────┘
+└────────────────────┘
 
-### ✅ Etapas concluídas:
-1. **Modelagem**: Criamos o design das tabelas
-2. **Criação**: Implementamos as tabelas no SQL Server
-3. **Carga**: Desenvolvemos o processo para carregar dados
-4. **Análise**: Criamos consultas úteis para análise
+text
 
-### 📈 Benefícios:
-- **Organização**: Dados estruturados de forma lógica
-- **Performance**: Consultas mais rápidas
-- **Análise**: Facilita criação de relatórios
-- **Histórico**: Mantém histórico dos dados
+## 📈 Dados Processados
 
-## 📁 O que você encontrará nesta pasta
+- **Período:** 92 trimestres móveis (jan-fev-mar 2018 até ago-set-out 2025)
+- **Taxa mínima:** 5.4% (2025)
+- **Taxa máxima:** 14.9% (2020)
+- **Regiões:** 6 estados + DF
+- **Total de registros:** 552 (92 trimestres × 6 regiões)
 
-### 📄 **documentation/**
-Explicações detalhadas sobre o modelo de dados e como tudo funciona.
+## 🚀 Como Executar
 
-### 📄 **scripts/**
-Códigos SQL para criar tabelas, carregar dados e fazer consultas.
+### 1. Criação das Tabelas
+```sql
+-- Executar em ordem:
+-- 1. Criar banco de dados (se necessário)
+-- 2. Executar 01_create_tables.sql
+-- 3. Executar procedimentos adicionais
+2. Inserção dos Dados
+sql
+-- Executar após criação das tabelas:
+EXEC 02_insert_data.sql
+3. Consultas de Validação
+sql
+-- Testar o DW com consultas de exemplo:
+EXEC 03_sample_queries.sql
+🔧 Scripts Disponíveis
+📄 01_create_tables.sql
+Criação completa das tabelas do Data Warehouse:
 
-### 📄 **diagrams/**
-Imagens que mostram como as tabelas se relacionam (se disponíveis).
+dim_tempo (Dimensão Tempo)
 
-### 📄 **screenshots/**
-Fotos mostrando os dados no data warehouse (se disponíveis).
+dim_regiao (Dimensão Região)
 
-## 🚀 Como usar
+fato_desemprego (Fato principal)
 
-### Para desenvolvedores:
-1. Veja os scripts em `scripts/` para entender a estrutura
-2. Consulte a documentação em `documentation/` para detalhes
-3. Use as consultas de exemplo para análise
+ctrl_etl_desemprego (Controle do ETL)
 
-### Para analistas:
-1. Os dados estão organizados para facilitar análise
-2. Use as views criadas para relatórios
-3. Consulte as métricas pré-calculadas
+📄 02_insert_data.sql
+Inserção dos 92 trimestres de dados:
 
-## 📊 Resultados alcançados
+Dados de 2018 a 2025
 
-- ✅ **92 trimestres** de dados organizados (2018-2025)
-- ✅ **Dados limpos** e validados
-- ✅ **Consultas otimizadas** para análise rápida
-- ✅ **Estrutura preparada** para crescimento
+6 regiões diferentes
 
-## 🔗 Ligações com outras pastas
+Valores reais do IBGE
 
-### ⬅️ Recebe dados de:
-- **04_orchestration**: Dados processados automaticamente
-- **03_etl_ssis**: Dados transformados e limpos
+Sistema de auditoria
 
-### ➡️ Fornece dados para:
-- **Power BI** (próxima etapa): Para criação de dashboards
-- **Relatórios**: Para análise e tomada de decisão
+📄 03_sample_queries.sql
+8 consultas de exemplo para análise:
 
-## 👨‍💻 Status do projeto
+Evolução anual da taxa
 
-**Nível:** ✅ **Completo e funcional**  
-**Última atualização:** $(data atual)  
-**Próximo passo:** Criar dashboard no Power BI  
+Comparação entre regiões
 
----
+Análise de tendência
 
-> 💡 **Dica para iniciantes:** Data warehouse parece complicado, mas é basicamente uma forma organizada de guardar dados para análise. Pense como uma biblioteca bem organizada, onde você encontra qualquer livro rapidamente!
+KPI da meta (8%)
 
-**Próxima etapa:** [06_power_bi/](../06_power_bi) - Dashboard e visualização
+Top 5 maiores taxas
+
+Análise sazonal
+
+Média móvel 4 trimestres
+
+Monitoramento do ETL
+
+📊 Principais KPIs
+Taxa Média de Desemprego - Meta: ≤ 8%
+
+Tendência Trimestral - Melhora/Piora
+
+Comparativo Regional - Ranking por estado
+
+Sazonalidade - Padrões por trimestre
+
+🔗 Integração com Outras Pastas
+Este DW se integra com:
+
+03_etl_ssis/ - Pipeline ETL de carga
+
+04_orchestration/ - SQL Agent para automação
+
+06_power_bi/ - Dashboard de visualização
+
+07_documentation/ - Documentação geral
+
+🎨 Diagramas (para incluir em diagrams/)
+Modelo Estrela Completo - star_schema.png
+
+Fluxo de Dados - data_flow.png
+
+Hierarquia Temporal - time_hierarchy.png
+
+📋 Checklist de Validação
+Tabelas criadas com sucesso
+
+Dados inseridos (92 trimestres)
+
+Consultas de exemplo funcionando
+
+Modelo dimensional validado
+
+Integração com ETL testada
+
+Screenshots atualizados
+
+Diagramas criados
+
+⚠️ Problemas Conhecidos
+Timezone: Todos os dados em horário de Brasília
+
+Arredondamento: Taxas com 1 casa decimal
+
+Atualização: Dados atualizados trimestralmente
+
+📞 Suporte
+Para questões técnicas:
+
+Consulte a documentação em documentation/
+
+Verifique os logs em ctrl_etl_desemprego
+
+Execute as consultas de validação
