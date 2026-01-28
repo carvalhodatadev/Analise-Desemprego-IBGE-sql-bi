@@ -1,5 +1,0 @@
-Esta pasta contém os screenshots do SSIS
-chore: cria estrutura da pasta screenshots para imagens do SSIS
-
-- Prepara pasta para receber prints do pacote SSIS
-- Organiza estrutura do repositório"
