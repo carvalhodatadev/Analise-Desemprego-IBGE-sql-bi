@@ -6,6 +6,7 @@ O objetivo desta documentação é demonstrar boas práticas profissionais, faci
 
 📁 O que Tem Nesta Pasta
 
+```
 docs/
 ├── README.md                     # Este arquivo (índice da documentação)
 ├── architecture.md               # Arquitetura geral do pipeline de dados
@@ -14,6 +15,7 @@ docs/
 ├── data_quality_strategy.md      # Estratégia de qualidade e validação dos dados
 ├── power_bi_overview.md          # Visão geral do modelo e dashboards no Power BI
 └── business_questions.md         # Perguntas de negócio respondidas pelo projeto
+```
 
 🏗️ Visão Geral da Arquitetura
 
