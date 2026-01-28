@@ -41,9 +41,9 @@ scripts/03_sample_queries.sql — Consultas de exemplo para análise
 diagrams/diagrama_sql.png
 
 📸 Screenshots
-screenshots/01_control_flow.PNG
+screenshots/01_control_flow.png
 
-screenshots/02_data_flow.PNG
+screenshots/02_data_flow.png
 
 🚀 IMPACTO DO DATA WAREHOUSE
 ❌ ANTES
