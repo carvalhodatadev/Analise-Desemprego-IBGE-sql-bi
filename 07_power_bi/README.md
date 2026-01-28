@@ -21,6 +21,7 @@ power_bi_setup.md — Configuração técnica e conexão com o Data Warehouse
 03_pagina_analise_2.PNG — Página de análises temporais (visão 2)
 04_pagina_analise_3.PNG — Página de análises temporais (visão 3)
 05_pagina_referencias.PNG — Página de fontes e metodologia
+06_diagrama_bi.PNG — Diagrama do modelo no Power BI
 
 ---
 
@@ -66,6 +67,12 @@ O dashboard permite:
 📚 Página de Referências e Metodologia
 
 ![Página Referências](screenshots/05_pagina_referencias.PNG)
+
+---
+
+🧩 Diagrama do Modelo no Power BI
+
+![Diagrama Power BI](screenshots/06_diagrama_bi.PNG)
 
 ---
 
