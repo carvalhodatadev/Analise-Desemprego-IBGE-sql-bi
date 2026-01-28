@@ -31,16 +31,16 @@ Construir o cérebro analítico do projeto - um Data Warehouse dimensional profi
 📸 EVIDÊNCIAS VISUAIS
 🔄 Processo ETL no SSIS
 Control Flow (Orquestração)
-
+https://screenshots/01_control_flow.PNG
 Fluxo de controle do pacote SSIS: Origem de Arquivo Simples → Coluna Derivada → Conversão de Dados → Destino OLE DB
 
 Data Flow (Pipeline de Dados)
-
+https://screenshots/02_data_flow.PNG
 Fluxo de dados do SSIS: Processo completo do CSV para staging e ETL
 
 📐 Modelo de Dados
 Diagrama do Modelo Estrela
-
+https://diagrams/diagrama_sql.PNG
 Modelo dimensional com FATO_Desemprego, DIM_Tempo e DIM_Regiao
 
 🏗️ ARQUITETURA DO MODELO ESTRELA
