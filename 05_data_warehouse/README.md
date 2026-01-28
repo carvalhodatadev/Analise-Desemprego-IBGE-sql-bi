@@ -4,7 +4,8 @@
 
 ## 📐 Diagrama do Modelo de Dados (Modelo Estrela)
 
-![Diagrama](diagrams/diagrama_sql.PNG)
+[![Diagrama do Modelo](screenshots/diagrama_sql.PNG)](screenshots/diagrama_sql.PNG)
+
 
 
 ---
