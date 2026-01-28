@@ -139,7 +139,7 @@ O Power BI consome apenas dados tratados e auditados no DW, garantindo:
 
 🔗 PRÓXIMA ETAPA DO PROJETO
 
-07_documentation/ → Documentação corporativa final  
+08_documentation/ → Documentação corporativa final  
 (Arquitetura, decisões técnicas e lições aprendidas)
 
 ---
