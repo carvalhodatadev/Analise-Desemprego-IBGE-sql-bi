@@ -16,10 +16,57 @@ scripts/02_insert_data.sql — Inserção dos 92 registros de desemprego
 scripts/03_sample_queries.sql — Consultas de exemplo para análise
 
 📊 Recursos Visuais
+📐 Diagramas
 
-diagrams/placeholder.txt — Arquivo placeholder para diagramas
+diagrams/modelo_estrela_dw.png — Diagrama do modelo estrela (DW no SQL Server)
 
-screenshots/placeholder.txt — Arquivo placeholder para screenshots
+diagrams/modelo_power_bi.png — Modelo de relacionamentos no Power BI
+
+📸 Screenshots
+
+screenshots/fluxo_controle_ssis.png — Control Flow do pacote SSIS (orquestração ETL)
+
+screenshots/fluxo_dados_ssis.png — Data Flow do SSIS (pipeline de dados)
+
+📐 Diagramas do Projeto
+⭐ Modelo Estrela do Data Warehouse
+
+Representa a modelagem dimensional com:
+
+Tabela Fato: fato_desemprego
+
+Dimensões: dim_tempo, dim_regiao
+
+Relacionamentos 1:N otimizados para análise
+
+📊 Modelo no Power BI
+
+Modelo aplicado na camada semântica para:
+
+Análises temporais
+
+Comparações regionais
+
+Criação de KPIs e dashboards
+
+📸 Evidências do Processo ETL (SSIS)
+🔁 Control Flow — Orquestração do Pacote
+
+Fluxo responsável por:
+
+Carga do CSV para staging
+
+Execução das procedures de processamento do DW
+
+🔄 Data Flow — Pipeline de Dados
+
+Pipeline com:
+
+Origem em arquivo CSV
+
+Transformações (coluna derivada, conversão de dados)
+
+Carga em banco de dados (OLE DB)
 
 🎯 OBJETIVO DO DATA WAREHOUSE
 
@@ -81,19 +128,16 @@ Performance: <1s por consulta (Otimizado com índices)
 🏆 ENGENHARIA DE DADOS PROFISSIONAL
 
 ⚡ PERFORMANCE — Índices clusterizados nas chaves de fatos
-
-CREATE CLUSTERED INDEX IX_FATO_TEMPO_REGIAO
+CREATE CLUSTERED INDEX IX_FATO_TEMPO_REGIAO 
 ON fato_desemprego(id_tempo, id_regiao);
 
 ✅ QUALIDADE — Constraints de validação
-
-ALTER TABLE fato_desemprego
-ADD CONSTRAINT CK_TAXA_RANGE
+ALTER TABLE fato_desemprego 
+ADD CONSTRAINT CK_TAXA_RANGE 
 CHECK (taxa_desemprego BETWEEN 0 AND 100);
 
 🧾 AUDITORIA — Logging automático
-
-INSERT INTO ctrl_etl_desemprego (status, total_registros)
+INSERT INTO ctrl_etl_desemprego (status, total_registros) 
 VALUES ('SUCESSO', 92);
 
 📊 KPIs IMPLEMENTADOS
@@ -119,43 +163,6 @@ Executar: scripts/02_insert_data.sql
 3️⃣ VALIDAR COM CONSULTAS
 
 Executar: scripts/03_sample_queries.sql
-
-🌟 SCRIPTS DISPONÍVEIS
-📄 01_create_tables.sql — A BASE
-
-dim_tempo (Dimensão temporal)
-
-dim_regiao (Dimensão geográfica)
-
-fato_desemprego (Tabela fato)
-
-ctrl_etl_desemprego (Auditoria)
-
-📄 02_insert_data.sql — OS DADOS
-
-92 trimestres reais do IBGE (2018–2025)
-
-6 regiões geográficas
-
-Validação e auditoria integrada
-
-📄 03_sample_queries.sql — AS CONSULTAS
-
-Evolução Anual
-
-Ranking Regional
-
-Média Móvel
-
-KPI da Meta
-
-Top 5 Piores
-
-Análise Sazonal
-
-Performance ETL
-
-Drill-Down
 
 🔗 INTEGRAÇÃO COM ECOSSISTEMA
 
@@ -187,39 +194,21 @@ Manutenção: Frágil e manual → Automatizado e robusto
 ✅ Sistema de auditoria em tempo real
 ✅ KPIs configurados com semáforo automático
 ✅ Integração completa com pipeline ETL
-⬜ Diagramas técnicos em diagrams/
-⬜ Prints em screenshots/
-
-🚨 ALERTAS DE PERFORMANCE
-
-⚡ CONSULTAS OTIMIZADAS: Todas as queries < 1s
-🔒 TRANSACTION SAFE: Rollback em caso de erro
-📊 STATISTICS UPDATED: Otimizador sempre atualizado
-🎯 INDEX COVERAGE: 100% das queries cobertas
-
-📞 SUPORTE TÉCNICO
-❓ Problemas com carga de dados?
-
-Verifique ctrl_etl_desemprego para logs
-
-Execute scripts/03_sample_queries.sql para validação
-
-Consulte documentation/etl_process.md para troubleshooting
-
-🐢 Performance lenta?
-
-Verifique índices com sp_helpindex
-
-Analise estatísticas com DBCC SHOW_STATISTICS
-
-Otimize com plano de execução
+✅ Diagramas técnicos documentados
+✅ Evidências visuais do ETL (SSIS)
 
 🏁 PRÓXIMA ETAPA: 06_power_bi/
 
 🔥 PREPARE-SE PARA: Dashboard interativo em Power BI
 🎨 VISUALIZAÇÕES: Gráficos de tendência, KPIs, mapas
+📱 MULTIPLATAFORMA: Desktop, Web, Mobile
+🤖 IA INTEGRADA: Insights automáticos com Q&A
 
 🚀 Conclusão
 
 Este Data Warehouse transforma dados brutos do IBGE em inteligência estratégica para decisões econômicas.
 Cada um dos 552 registros representa uma oportunidade de insight! 🚀
+
+Se quiser, próximo upgrade que posso fazer pra você:
+
+✅ Texto de descrição do projeto para LinkedIn
