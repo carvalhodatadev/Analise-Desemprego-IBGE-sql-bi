@@ -1,152 +1,140 @@
-# 📊 Power BI — Dashboard de Análise de Desemprego (IBGE)
+📊 Power BI — Dashboard Analítico de Desemprego (IBGE)
 
-Este módulo representa a **camada final de visualização e análise** do projeto, utilizando Power BI conectado ao Data Warehouse dimensional construído nas etapas anteriores.
+📁 Arquivos Nesta Pasta
 
-Aqui os dados são transformados em **insights visuais, KPIs e análises interativas** para apoio à tomada de decisão.
+README.md — Esta documentação
 
----
+📂 dashboards/
+dashboard_desemprego.pbix — Arquivo do relatório Power BI
+documentation.md — Guia de navegação e leitura do dashboard
 
-## 📸 Visão Geral do Dashboard
+📂 data_models/
+star_schema_diagram.md — Diagrama e explicação do modelo estrela
+dax_measures.md — Medidas DAX utilizadas no relatório
 
-### 🖥️ Dashboard Completo
-![Dashboard Completo](screenshots/01_dashboard_completo.PNG)
+📂 documentation/
+power_bi_setup.md — Configuração técnica e conexão com o Data Warehouse
 
----
-
-### 📈 Evolução Temporal do Desemprego
-![Evolução Temporal](screenshots/02_evolucao_temporal.PNG)
-
----
-
-### 🚦 KPIs Principais
-![KPIs](screenshots/03_kpis_principais.PNG)
-
-
----
-
-## 🎯 Objetivo do Dashboard
-
-- Monitorar a **taxa de desemprego ao longo do tempo**
-- Identificar **tendências econômicas**
-- Avaliar desempenho frente à **meta de 8%**
-- Permitir **análise interativa por período e região**
+📂 screenshots/
+01_capa_dashboard.PNG — Capa visual do dashboard (design Figma)
+02_pagina_analise_1.PNG — Página de análises temporais (visão 1)
+03_pagina_analise_2.PNG — Página de análises temporais (visão 2)
+04_pagina_analise_3.PNG — Página de análises temporais (visão 3)
+05_pagina_referencias.PNG — Página de fontes e metodologia
 
 ---
 
-## 📊 KPIs Implementados
+🎯 OBJETIVO DO DASHBOARD
 
-- ✅ Taxa Atual de Desemprego  
-- ✅ Meta Econômica (≤ 8%)  
-- ✅ Tendência Trimestral (↑ / ↓)  
-- ✅ Variação vs. Trimestre Anterior  
-- ✅ Ranking Regional  
+Fornecer uma análise visual, interativa e orientada a indicadores sobre a evolução do desemprego no Brasil, utilizando dados históricos do IBGE modelados em um Data Warehouse dimensional.
+
+O dashboard permite:
+
+- Análise temporal da taxa de desemprego
+- Monitoramento de metas (KPI ≤ 8%)
+- Identificação de tendências e sazonalidade
+- Navegação entre períodos de forma interativa
 
 ---
 
-## 🧠 Modelo de Dados
+📸 EVIDÊNCIAS VISUAIS DO DASHBOARD
 
-O dashboard consome dados diretamente do **Data Warehouse dimensional**, utilizando arquitetura **modelo estrela (star schema)** para garantir:
+🖼️ Capa do Dashboard (Design Visual)
 
-- Alta performance
+![Capa do Dashboard](screenshots/01_capa_dashboard.PNG)
+
+---
+
+📈 Página 1 — Análise Temporal (Visão Geral)
+
+![Página Análise 1](screenshots/02_pagina_analise_1.PNG)
+
+---
+
+📉 Página 2 — Análise Temporal Detalhada
+
+![Página Análise 2](screenshots/03_pagina_analise_2.PNG)
+
+---
+
+📊 Página 3 — Comparações e Tendências
+
+![Página Análise 3](screenshots/04_pagina_analise_3.PNG)
+
+---
+
+📚 Página de Referências e Metodologia
+
+![Página Referências](screenshots/05_pagina_referencias.PNG)
+
+---
+
+🧠 MODELO DE DADOS UTILIZADO
+
+O dashboard consome dados diretamente do Data Warehouse, utilizando modelo estrela:
+
+Tabela Fato:
+- fato_desemprego — Métrica de taxa de desemprego por trimestre
+
+Dimensão:
+- dim_tempo — Hierarquia temporal (Ano, Trimestre)
+
+Relacionamento:
+- dim_tempo (1) → fato_desemprego (*)
+
+Esse modelo garante:
+
+- Alto desempenho
 - Simplicidade analítica
-- Facilidade de expansão
-
-Tabelas utilizadas:
-
-- **Fato:** `fato_desemprego`  
-- **Dimensões:** `dim_tempo`, `dim_regiao`
-
-📄 Detalhes técnicos em: `data_models/star_schema_diagram.md`
+- Facilidade para criação de KPIs e tendências
 
 ---
 
-## 🧮 Medidas DAX
+📊 KPIs E ANÁLISES IMPLEMENTADAS
 
-As métricas e KPIs são calculadas com **DAX**, incluindo:
+- Taxa Atual de Desemprego
+- KPI de Meta (≤ 8%)
+- Evolução Trimestral
+- Tendência de Longo Prazo
+- Análise Sazonal por Trimestre
+- Comparação Ano a Ano
 
-- Taxa Média de Desemprego  
-- Variação Trimestral (%)  
-- Indicador de Meta (Semáforo)  
-- Média Móvel  
-
-📄 Código documentado em: `data_models/dax_measures.md`
-
----
-
-## ⚙️ Configuração Técnica
-
-- Fonte de dados: SQL Server (Data Warehouse)
-- Modo: Import ou DirectQuery (dependendo do ambiente)
-- Atualização: Manual ou via Gateway
-- Modelagem: Star Schema
-
-📄 Guia completo em: `documentation/power_bi_setup.md`
+Todos os indicadores são calculados via medidas DAX.
 
 ---
 
-## 📁 Arquivos Nesta Pasta
+⚙️ INTEGRAÇÃO COM O PIPELINE DE DADOS
 
-### 📄 README.md  
-Esta documentação geral do módulo de visualização em Power BI.
+Fluxo completo do projeto:
 
----
+1. Dados brutos do IBGE (Excel)
+2. Staging Area
+3. ETL via SSIS
+4. Data Warehouse (SQL Server)
+5. Power BI (visualização analítica)
 
-### 📂 dashboards/
+O Power BI consome apenas dados tratados e auditados no DW, garantindo:
 
-- **dashboard_desemprego.pbix**  
-  Arquivo do Power BI contendo todas as páginas, visuais, KPIs e medidas do projeto.  
-  *(Se >100MB, manter apenas localmente e disponibilizar prints em screenshots/)*
-
-- **documentation.md**  
-  Guia de navegação do dashboard, explicando cada página, gráfico e filtro disponível.
-
----
-
-### 📂 data_models/
-
-- **star_schema_diagram.md**  
-  Diagrama e explicação do modelo estrela utilizado no Power BI, alinhado ao Data Warehouse.
-
-- **dax_measures.md**  
-  Documentação completa das medidas DAX utilizadas nos KPIs, tendências e rankings.
+- Confiabilidade
+- Histórico consistente
+- Governança dos dados
 
 ---
 
-### 📂 documentation/
+🏆 RESULTADOS ALCANÇADOS
 
-- **power_bi_setup.md**  
-  Instruções técnicas para conexão com o SQL Server, atualização de dados e configuração do modelo.
-
----
-
-### 📂 screenshots/
-
-- **01_dashboard_completo.PNG**  
-  Visão geral do dashboard com todas as seções principais.
-
-- **02_evolucao_temporal.PNG**  
-  Gráfico de evolução do desemprego ao longo dos trimestres.
-
-- **03_kpis_principais.PNG**  
-  Cartões de KPI com taxa atual, meta e tendência.
-
-
-## 🔗 Integração com o Projeto Completo
-
-- `01_data_raw/` → Dados brutos em Excel (IBGE)  
-- `02_staging/` → Padronização e tidy data  
-- `03_etl_ssis/` → ETL com SSIS  
-- `04_orchestration/` → SQL Agent  
-- `05_data_warehouse/` → Modelo dimensional  
-- `06_power_bi/` → Dashboards e KPIs  
+- Dashboards interativos com resposta imediata
+- KPIs com semáforo automático
+- Visual moderno e profissional
+- Base pronta para expansão futura (regiões, indicadores econômicos)
 
 ---
 
-## 🏁 Conclusão
+🔗 PRÓXIMA ETAPA DO PROJETO
 
-Este dashboard representa a camada final de um pipeline completo de dados, transformando informações econômicas em **inteligência visual acessível, interativa e orientada a decisões**.
+07_documentation/ → Documentação corporativa final  
+(Arquitetura, decisões técnicas e lições aprendidas)
 
-Projeto desenvolvido com foco em **boas práticas de BI, modelagem dimensional e engenharia de dados**.
+---
 
-**Status:** ✅ Dashboard operacional e integrado ao Data Warehouse
-
+Status: ✅ DASHBOARD POWER BI FINALIZADO E INTEGRADO AO DATA WAREHOUSE
