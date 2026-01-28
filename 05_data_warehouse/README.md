@@ -1,154 +1,76 @@
 📊 Data Warehouse - Análise de Desemprego IBGE
-📸 Evidências Visuais do Projeto
-🔄 Processo ETL no SSIS — Control Flow
 
-🔄 Processo ETL no SSIS — Data Flow
+---
 
-📐 Diagrama do Modelo Estrela (SQL Server)
+## 📐 Diagrama do Modelo de Dados (Modelo Estrela)
 
-🎯 Objetivo do Data Warehouse
+[![Diagrama Modelo Estrela](diagrams/diagrama_sql.PNG)](https://github.com/carvalhodtadev/Analise-Desemprego-IBGE-sql-bi/blob/main/05_data_warehouse/diagrams/diagrama_sql.PNG)
 
-Construir o cérebro analítico do projeto — um Data Warehouse dimensional profissional que transforma os 92 trimestres de dados brutos do IBGE em insights estratégicos através de um modelo estrela otimizado para análise.
+---
 
-🏗️ Arquitetura do Modelo Estrela
+## 🔄 Evidências do Processo ETL no SSIS
 
-⭐ MODELO ESTRELA — OTIMIZADO PARA ANÁLISE ⭐
+### ⚙️ Control Flow — Orquestração do Processo
 
-        DIM_TEMPO
-            ▲
-            │
-     FATO_DESEMPREGO
+[![Control Flow SSIS](screenshots/01_control_flow.PNG)](https://github.com/carvalhodtadev/Analise-Desemprego-IBGE-sql-bi/blob/main/05_data_warehouse/screenshots/01_control_flow.PNG)
 
+---
 
-Tabela Fato: fato_desemprego — métricas por trimestre
+### 🔁 Data Flow — Pipeline de Transformação e Carga
 
-Dimensão: dim_tempo — hierarquia temporal (Ano, Trimestre)
+[![Data Flow SSIS](screenshots/02_data_flow.PNG)](https://github.com/carvalhodtadev/Analise-Desemprego-IBGE-sql-bi/blob/main/05_data_warehouse/screenshots/02_data_flow.PNG)
 
-📁 Arquivos Nesta Pasta
-📄 Documentação
+---
 
-README.md — Esta documentação
+## 🎯 Objetivo do Data Warehouse
 
-documentation/dimensional_model.md — Modelo dimensional
+Construir um Data Warehouse dimensional profissional que transforma 92 trimestres de dados do IBGE em insights estratégicos, utilizando modelo estrela otimizado para análises temporais.
 
-documentation/etl_process.md — Processo ETL
+---
 
-📜 Scripts SQL
+## 🏗️ Arquitetura do Modelo Estrela
 
-scripts/01_create_tables.sql — Criação das tabelas
+- **Tabela Fato**
+  - `fato_desemprego` — Métricas de desemprego por período
 
-scripts/02_insert_data.sql — Carga dos 92 trimestres
+- **Dimensão**
+  - `dim_tempo` — Hierarquia temporal (ano, semestre, trimestre)
 
-scripts/03_sample_queries.sql — Consultas analíticas
+---
 
-📊 Recursos Visuais
+## 📈 Dados Transformados
 
-diagrams/diagrama_sql.PNG — Diagrama do DW
+| Métrica | Valor |
+|--------|--------|
+| Período analisado | 92 trimestres (2018–2025) |
+| Taxa mínima | 5.4% (2025) |
+| Taxa máxima | 14.9% (2020) |
+| Região | Brasil |
+| Total de registros | 92 |
+| Performance | < 1s por consulta |
 
-screenshots/01_control_flow.PNG — Control Flow SSIS
+---
 
-screenshots/02_data_flow.PNG — Data Flow SSIS
+## 🛠️ Como Executar
 
-🚀 Impacto do Data Warehouse
-❌ Antes
+1. Executar `scripts/01_create_tables.sql`  
+2. Executar `scripts/02_insert_data.sql`  
+3. Validar com `scripts/03_sample_queries.sql`
 
-92 colunas horizontais (Excel)
+---
 
-Análise limitada
+## 🔗 Integração com o Projeto (Pipeline Completo)
 
-Sem auditoria
+- `01_data_raw/` → Excel (dados brutos)
+- `02_staging/` → Limpeza e padronização
+- `03_etl_ssis/` → ETL em SSIS
+- `04_orchestration/` → SQL Agent
+- `05_data_warehouse/` → Modelo dimensional
+- `06_power_bi/` → Dashboards
 
-Processo manual
+---
 
-✅ Depois
+## 🏆 Status
 
-Modelo dimensional
-
-Histórico desde 2018
-
-KPIs com meta de 8%
-
-Integração com Power BI
-
-Auditoria automática
-
-📈 Dados Transformados
-Métrica	Valor	Significado
-Período Analisado	92 trimestres	2018–2025
-Taxa Mínima	5.4%	Recorde histórico
-Taxa Máxima	14.9%	Pico da pandemia
-Região	Brasil	Dados nacionais
-Total de Registros	92	1 por trimestre
-Performance	<1s	Queries otimizadas
-🔥 Destaques Técnicos
-⚡ Performance — Índice Clusterizado
-CREATE CLUSTERED INDEX IX_FATO_TEMPO 
-ON fato_desemprego(id_tempo);
-
-✅ Qualidade — Constraint de Validação
-ALTER TABLE fato_desemprego
-ADD CONSTRAINT CK_TAXA_RANGE 
-CHECK (taxa_desemprego BETWEEN 0 AND 100);
-
-🧾 Auditoria — Logging ETL
-INSERT INTO ctrl_etl_desemprego (status, total_registros)
-VALUES ('SUCESSO', 92);
-
-📊 KPIs Implementados
-
-Meta ≤ 8% (semáforo automático)
-
-Tendência trimestral
-
-Análise sazonal
-
-Evolução anual
-
-🛠️ Como Executar
-1️⃣ Criar Estrutura
-
-Executar:
-
-scripts/01_create_tables.sql
-
-2️⃣ Carregar Dados
-
-Executar:
-
-scripts/02_insert_data.sql
-
-3️⃣ Validar
-
-Executar:
-
-scripts/03_sample_queries.sql
-
-🔗 Integração com o Projeto (Pipeline Completo)
-
-- `01_data_raw/` → Dados brutos do IBGE em Excel (fonte original)
-- `02_staging/` → Limpeza e padronização (tidy data em CSV)
-- `03_etl_ssis/` → Pipeline de carga para o DW
-- `04_orchestration/` → Agendamento com SQL Agent
-- `05_data_warehouse/` → Modelo dimensional e queries
-- `06_power_bi/` → Dashboards e KPIs
-
-🏁 Próxima Etapa
-
-➡️ 06_power_bi/
-Dashboard interativo com KPIs, tendências e comparativos regionais.
-
-Status: ✅ Data Warehouse 100% operacional
-🚀 Pronto para consumo analítico no Power BI
-
-⚠️ SE AINDA NÃO APARECER A IMAGEM
-
-Confere se os nomes estão idênticos (maiúsculo/minúsculo conta no GitHub):
-
-screenshots/01_control_flow.PNG
-screenshots/02_data_flow.PNG
-diagrams/diagrama_sql.PNG
-
-
-Se tiver .png minúsculo e no README .PNG, não aparece.
-
-Se quiser, já te entrego o próximo README da pasta 06_power_bi no mesmo padrão visual de portfólio top de vaga PJ 💼🔥
+✅ Data Warehouse operacional  
+➡️ Próxima etapa: `06_power_bi/`
